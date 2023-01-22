@@ -7,9 +7,11 @@ var cors = require("cors");
 
 
 var personalInfoRoute = require('./routes/personalInfo');
+var experienceRoute = require('./routes/experience');
+var skillRoute = require('./routes/skill');
 
 var app = express();
-const  mongoose  = require("mongoose");
+const mongoose = require("mongoose");
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -19,6 +21,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use('/personalInfo', personalInfoRoute);
+app.use('/experience', experienceRoute)
+app.use('/skills', skillRoute)
 
 mongoose
     .connect(process.env.URL, {
@@ -31,16 +35,16 @@ mongoose
     })
     .catch(console.error);
 
-    //error handling
-    app.use((err, req, res, next) => {
-        res.status(err.status || 500).send({
-            success: false,
-            message: err.message,
-        });
+//error handling
+app.use((err, req, res, next) => {
+    res.status(err.status || 500).send({
+        success: false,
+        message: err.message,
     });
-    
-    // Undefined routes error handling
-    app.use((req, res, next) => {
-        next(createError(404));
-        });
+});
+
+// Undefined routes error handling
+app.use((req, res, next) => {
+    next(createError(404));
+});
 module.exports = app;
