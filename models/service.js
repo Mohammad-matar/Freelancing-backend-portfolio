@@ -20,5 +20,5 @@ const ServiceSchema = new Schema({
         collection: "Services"
     })
 
-const Experience = model("Service", ServiceSchema);
+const Service = model("Service", ServiceSchema);
 module.exports = Service;

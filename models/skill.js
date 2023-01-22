@@ -17,5 +17,5 @@ const SkillSchema = new Schema({
         collection: "Skills"
     })
 
-const Experience = model("Skill", SkillSchema);
+const Skill = model("Skill", SkillSchema);
 module.exports = Skill;

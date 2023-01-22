@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model, Types } = require('mongoose')
 const ProjectSchema = new Schema({
 
     image: {
@@ -14,7 +14,7 @@ const ProjectSchema = new Schema({
         required: true
     },
     date: {
-        type: String,
+        type: Date,
         required: true
     },
     demoURL: {
@@ -25,14 +25,18 @@ const ProjectSchema = new Schema({
         type: String,
         required: true
     },
-    skill_id: {
-        type: String,
-        required: true
-    },
-    service_id: {
-        type: String,
-        required: true
-    },
+    skill_id: [
+        {
+            type: Types.ObjectId,
+            ref: "Skill",
+        },
+    ],
+    service_id: [
+        {
+            type: Types.ObjectId,
+            ref: "Skill",
+        },
+    ],
 
 },
     {

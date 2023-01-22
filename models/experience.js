@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model, Types } = require('mongoose')
 
 const ExperienceSchema = new Schema({
 
@@ -30,10 +30,12 @@ const ExperienceSchema = new Schema({
         type: String,
         required: true
     },
-    skill_id: {
-        type: String,
-        required: true
-    },
+    skill_id: [
+        {
+            type: Types.ObjectId,
+            ref: "Skill",
+        },
+    ],
 },
     {
         timestamps: true,
