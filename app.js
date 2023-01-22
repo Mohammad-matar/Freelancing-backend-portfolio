@@ -5,9 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var usersRouter = require('./routes/users');
-const  mongoose  = require("mongoose");
 
 var app = express();
+const  mongoose  = require("mongoose");
 
 app.use(logger('dev'));
 app.use(express.json());
