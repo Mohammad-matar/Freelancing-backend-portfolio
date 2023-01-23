@@ -9,6 +9,7 @@ var cors = require("cors");
 var personalInfoRoute = require('./routes/personalInfo');
 var experienceRoute = require('./routes/experience');
 var skillRoute = require('./routes/skill');
+var serviceRoute = require('./routes/service');
 
 var app = express();
 const mongoose = require("mongoose");
@@ -21,8 +22,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use('/personalInfo', personalInfoRoute);
-app.use('/experience', experienceRoute)
-app.use('/skills', skillRoute)
+app.use('/experience', experienceRoute);
+app.use('/skills', skillRoute);
+app.use("/services", serviceRoute);
 
 mongoose
     .connect(process.env.URL, {
