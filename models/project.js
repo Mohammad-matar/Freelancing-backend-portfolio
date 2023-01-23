@@ -34,7 +34,7 @@ const ProjectSchema = new Schema({
     service_id: [
         {
             type: Types.ObjectId,
-            ref: "Skill",
+            ref: "Service",
         },
     ],
 
