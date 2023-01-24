@@ -21,7 +21,7 @@ class Controller {
                 success: false,
             });
             res.status(200).json({ success: true, response });
-        });
+        }).populate("skill_id");
     }
 
     //add
