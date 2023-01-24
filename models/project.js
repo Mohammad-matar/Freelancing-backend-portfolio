@@ -31,13 +31,11 @@ const ProjectSchema = new Schema({
             ref: "Skill",
         },
     ],
-    service_id: [
+    service_id: 
         {
             type: Types.ObjectId,
             ref: "Service",
         },
-    ],
-
 },
     {
         timestamps: true,
