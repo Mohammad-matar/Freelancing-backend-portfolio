@@ -12,6 +12,8 @@ var skillRoute = require('./routes/skill');
 var serviceRoute = require('./routes/service');
 var projectRoute = require('./routes/project');
 var contactRoute = require('./routes/contact');
+var authRouter = require("./routes/auth");
+
 
 var app = express();
 const mongoose = require("mongoose");
@@ -29,6 +31,7 @@ app.use('/skills', skillRoute);
 app.use("/services", serviceRoute);
 app.use('/projects', projectRoute);
 app.use('/contact', contactRoute);
+app.use("/auth", authRouter);
 
 mongoose
     .connect(process.env.URL, {
