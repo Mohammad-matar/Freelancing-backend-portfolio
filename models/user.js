@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
 const { Schema, model } = require("mongoose");
 
 const UserSchema = new Schema(
@@ -14,7 +14,7 @@ const UserSchema = new Schema(
     },
     {
         timestamps: true,
-        collection: "Users"
+        collection: "users"
     }
 )
 //to hash the password before save

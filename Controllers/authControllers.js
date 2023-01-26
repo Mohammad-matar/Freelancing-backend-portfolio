@@ -15,6 +15,7 @@ class Controller {
                 // check whether the user is exist and the password matches with the hashed one
                 if (!user || !user.checkPassword(password)) {
                     throw createError(401, "email or password is incorrect");
+
                 }
                 let token = jwt.sign(JSON.stringify(user), process.env.JWT_SECRET);
 

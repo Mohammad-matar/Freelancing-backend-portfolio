@@ -22,6 +22,7 @@ class Controller {
         User.find({ email: data.email })
             .then((users) => {
                 // check if the users length more than zero
+
                 if (users.length > 0) {
                     res
                         .status(401)
@@ -34,6 +35,7 @@ class Controller {
         User.create(data)
             .then((user) => {
                 // create JWT token and return it
+                console.log(user)
 
 
                 res.status(200).json({ success: true, message: "Add User Successfully", data: user });

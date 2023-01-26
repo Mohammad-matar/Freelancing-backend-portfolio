@@ -13,6 +13,7 @@ var serviceRoute = require('./routes/service');
 var projectRoute = require('./routes/project');
 var contactRoute = require('./routes/contact');
 var authRouter = require("./routes/auth");
+var userRouter = require('./routes/user');
 
 
 var app = express();
@@ -32,6 +33,7 @@ app.use("/services", serviceRoute);
 app.use('/projects', projectRoute);
 app.use('/contact', contactRoute);
 app.use("/auth", authRouter);
+app.use("/user", userRouter);
 
 mongoose
     .connect(process.env.URL, {
