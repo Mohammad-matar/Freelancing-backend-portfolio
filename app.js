@@ -15,6 +15,9 @@ var contactRoute = require('./routes/contact');
 var authRouter = require("./routes/auth");
 var userRouter = require('./routes/user');
 
+var uploadRouter = require('./routes/upload');
+
+var fileUpload = require("express-fileupload")
 
 var app = express();
 const mongoose = require("mongoose");
@@ -26,6 +29,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
+app.use(fileUpload())
+
 app.use('/personalInfo', personalInfoRoute);
 app.use('/experience', experienceRoute);
 app.use('/skills', skillRoute);
@@ -34,6 +39,8 @@ app.use('/projects', projectRoute);
 app.use('/contact', contactRoute);
 app.use("/auth", authRouter);
 app.use("/user", userRouter);
+app.use('/upload', uploadRouter);
+
 
 mongoose
     .connect(process.env.URL, {

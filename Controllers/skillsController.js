@@ -20,10 +20,7 @@ class Controller {
 
     //add
     post(req, res, next) {
-        let { filename } = req.file;
-        let { title } = req.body;
-        let body = { title: title, image: filename };
-
+        let body = req.body;
         let doc = new Skills(body);
         doc.save((err, response) => {
             if (err) return next(err);
@@ -34,9 +31,7 @@ class Controller {
     //edit
     put(req, res, next) {
         let { id } = req.params;
-        let { title } = req.body;
-        let { filename } = req.file || {};
-        let data = { title: title, image: filename };
+        let data = req.body;
         Skills.updateOne({ _id: id }, data, (err, response) => {
             if (err) return next(err);
             res.status(200).send({ success: true, response });
