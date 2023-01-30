@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require("cors");
+// var fileUpload = require("express-fileupload")
 
 
 var personalInfoRoute = require('./routes/personalInfo');
@@ -17,10 +18,11 @@ var userRouter = require('./routes/user');
 
 var uploadRouter = require('./routes/upload');
 
-var fileUpload = require("express-fileupload")
 
 var app = express();
 const mongoose = require("mongoose");
+
+// app.use(fileUpload())
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -29,7 +31,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
-app.use(fileUpload())
 
 app.use('/personalInfo', personalInfoRoute);
 app.use('/experience', experienceRoute);

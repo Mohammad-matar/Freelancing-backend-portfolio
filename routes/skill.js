@@ -1,7 +1,7 @@
 const express = require("express")
-
 const controller = require("../Controllers/skillsController")
 const router = express.Router();
+
 
 
 

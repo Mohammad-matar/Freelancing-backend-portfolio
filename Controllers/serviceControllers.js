@@ -27,9 +27,7 @@ class Controller {
 
     //add
     post(req, res, next) {
-        let { filename } = req.file;
-        let { title, description } = req.body;
-        let body = { title: title, description: description, icon: filename };
+        let body = req.body;
 
         let doc = new service(body);
         doc.save((err, response) => {
@@ -44,9 +42,7 @@ class Controller {
     //edit
     put(req, res, next) {
         let { id } = req.params;
-        let { filename } = req.file || {};
-        let { title, description } = req.body;
-        let data = { title: title, description: description, icon: filename };
+        let data = req.body;
         service.updateOne({ _id: id }, data, (err, response) => {
             if (err) return res.status(500).json({
                 message: `ERROR ${err}`,
