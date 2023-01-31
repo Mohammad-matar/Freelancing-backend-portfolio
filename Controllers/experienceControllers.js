@@ -27,10 +27,7 @@ class Controller {
 
     //add
     post(req, res, next) {
-        let { filename } = req.file;
-        let { title, company, location, description, startDate, endDate, skill_id } = req.body;
-        let body = { title: title, company: company, location: location, description: description, startDate: startDate, endDate: endDate, skill_id: skill_id, companyLogo: filename };
-
+        let body = red.body;
         let doc = new experience(body);
         doc.save((err, response) => {
             if (err) return res.status(500).json({
@@ -44,9 +41,7 @@ class Controller {
     //edit
     put(req, res, next) {
         let { id } = req.params;
-        let { filename } = req.file || {};
-        let { title, company, location, description, startDate, endDate, skill_id } = req.body;
-        let data = { title: title, company: company, location: location, description: description, startDate: startDate, endDate: endDate, skill_id: skill_id, companyLogo: filename };
+        let data = req.body;
         experience.updateOne({ _id: id }, data, (err, response) => {
             if (err) return res.status(500).json({
                 message: `ERROR ${err}`,
