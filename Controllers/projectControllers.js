@@ -26,10 +26,8 @@ class Controller {
 
     //add
     post(req, res, next) {
-        let { filename } = req.file;
-        let { title, description, date, demoURL, githubURL, skill_id, service_id } = req.body;
-        let body = { title: title, description: description, date: date, demoURL: demoURL, githubURL: githubURL, skill_id: skill_id, service_id: service_id, image: filename };
-
+       
+        let body = req.body;
         let doc = new project(body);
         doc.save((err, response) => {
             if (err) return res.status(500).json({
@@ -43,9 +41,7 @@ class Controller {
     //edit
     put(req, res, next) {
         let { id } = req.params;
-        let { filename } = req.file || {};
-        let { title, description, date, demoURL, githubURL, skill_id, service_id } = req.body;
-        let data = { title: title, description: description, date: date, demoURL: demoURL, githubURL: githubURL, skill_id: skill_id, service_id: service_id, image: filename };
+        let data = req.body
         project.updateOne({ _id: id }, data, (err, response) => {
             if (err) return res.status(500).json({
                 message: `ERROR ${err}`,
