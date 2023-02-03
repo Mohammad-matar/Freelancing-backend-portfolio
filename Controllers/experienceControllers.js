@@ -27,7 +27,7 @@ class Controller {
 
     //add
     post(req, res, next) {
-        let body = red.body;
+        let body = req.body;
         let doc = new experience(body);
         doc.save((err, response) => {
             if (err) return res.status(500).json({
