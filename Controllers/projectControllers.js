@@ -9,7 +9,7 @@ class Controller {
                 success: false,
             });
             res.status(200).json({ data: response });
-        }).populate(["service_id", "skill_id"]);
+        }).populate(["service_id", "skill_id"]).sort({ date: -1 });
     }
 
     //get By Id
