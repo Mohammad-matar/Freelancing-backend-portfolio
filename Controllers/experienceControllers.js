@@ -10,7 +10,7 @@ class Controller {
                     success: false,
                 });
                 res.status(200).json({ data: response });
-            }).populate("skill_id");
+            }).populate("skill_id").sort({ startDate: -1 });
     }
 
     //get By Id
