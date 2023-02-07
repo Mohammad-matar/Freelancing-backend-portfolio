@@ -47,9 +47,7 @@ class Controller {
     //Update a User
     put(req, res, next) {
         let { id } = req.params;
-        let { filename } = req.file || {};
-        let { title } = req.body;
-        let body = { title: title, icon: filename };
+        let body = req.body;
         User.updateOne(
             { _id: id },
             {
